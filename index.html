@@ -1,19 +1,192 @@
 
-<html>
-    <head>
-	<title>yaiba's</title>
-    </head>
-    <body>
-        <h2 style="text-align: center;">To explore...</h2>
-	<p style="text-align: center;">yaiba</p>
-	<!--|因為過程人格特質程式|-->
-	<!--|错赢配方歌本地激发|-->
-	<!--|迅雷捐献越过舌头解决办法争吵|-->
-	<!--|正常忘记|-->
-	<!--|文字感受風格受訪者不同|-->
-	<!--|故事批评文件好机器|-->
-	<!--|那个我浏览忘记钱市民|-->
-	<!--|仓库|-->
-
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaiba's Personal Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background-color: #f5f5f5;
+            color: #333333;
+        }
+        
+        .navigation {
+            width: 60%; /* 3/5 of the width */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .nav-links {
+            padding: 10px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .nav-links ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-links li {
+            padding: 10px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        .nav-links li:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .nav-links li.active {
+            background-color: #333333;
+            color: white;
+        }
+        
+        .content {
+            width: 57.14%; /* 4/7 of the width */
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        .content-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            display: none; /* Hide all sections by default */
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .content-section.active {
+            display: block; /* Show only active section */
+        }
+        
+        .content-section h2 {
+            color: #333333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            font-size: 2rem;
+        }
+        
+        .content-section h3 {
+            color: #333333;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .content-section p {
+            line-height: 1.8;
+            color: #333333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .content-section ul {
+            display: inline-block;
+            text-align: left;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            color: #333333;
+            line-height: 1.8;
+        }
+        
+        .content-section ul li {
+            margin-bottom: 8px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation Section -->
+    <div class="navigation">
+        <div class="nav-links">
+            <ul id="nav-menu">
+                <li class="active" data-target="about">Me</li>
+                <li data-target="projects">Projects</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- Content Section -->
+    <div class="content">
+        <div id="about" class="content-section">
+            <p>Hello! I'm Yaiba, bla blabla.</p>
+            <p>More bla blabla.</p>
+        </div>
+        
+        <div id="projects" class="content-section">
+            <h3>Yyyy</h3>
+            <p>.....</p>
+        </div>
+        
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation items and content sections
+            const navItems = document.querySelectorAll('#nav-menu li');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            // Function to show active section and hide others
+            function showActiveSection(targetId) {
+                // Hide all sections
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show the target section
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            }
+            
+            // Show the initial active section (first one by default)
+            const initialActiveItem = document.querySelector('#nav-menu li.active');
+            if (initialActiveItem) {
+                const initialTargetId = initialActiveItem.getAttribute('data-target');
+                showActiveSection(initialTargetId);
+            }
+            
+            // Add click event to each navigation item
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all nav items
+                    navItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked nav item
+                    this.classList.add('active');
+                    
+                    // Get the target section id
+                    const targetId = this.getAttribute('data-target');
+                    
+                    // Show the target section and hide others
+                    showActiveSection(targetId);
+                });
+            });
+        });
+    </script>
+</body>
 </html>
